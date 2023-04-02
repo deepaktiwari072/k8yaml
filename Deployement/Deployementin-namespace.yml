@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: devnamespace
+  namespace: dev
+  labels:
+    app: nginxnamespace
+  
+spec:
+  selector:
+    matchLabels:
+      app: nginxnamespace
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginxnamespace
+    spec:
+      containers:
+        - name: devnamespace
+          image: nginx
+          ports:
+            - containerPort: 8080

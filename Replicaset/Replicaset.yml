@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: engineerbano
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      tier: frontend
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+        - name: engineerbano
+          image: nginx
+          ports:
+            - containerPort: 80
+  
